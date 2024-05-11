@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: golang_container
+    environment:
+      from: .env
+    build: .
+    ports:
+      - '8000:8080'
+    # Replace 8080 with your desired port
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14.0
+    container_name: postgres_container
+    ports:
+      - '5432:5432' # Standard Postgres port
+    environment:
+      POSTGRES_HOST: 'postgres'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'docker'
+      POSTGRES_DBNAME: 'postgres'
+
