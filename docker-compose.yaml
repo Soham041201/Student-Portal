@@ -4,7 +4,10 @@ services:
   app:
     container_name: golang_container
     environment:
-      from: .env
+      POSTGRES_HOST: 'postgres'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'docker'
+      POSTGRES_DBNAME: 'postgres'
     build: .
     ports:
       - '8000:8080'
@@ -24,4 +27,3 @@ services:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'docker'
       POSTGRES_DBNAME: 'postgres'
-
