@@ -3,11 +3,8 @@ version: '3.8'
 services:
   app:
     container_name: golang_container
-    environment:
-      POSTGRES_HOST: 'postgres'
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'docker'
-      POSTGRES_DBNAME: 'postgres'
+    env_file:
+      - .env 
     build: .
     ports:
       - '8000:8080'
@@ -22,8 +19,6 @@ services:
     container_name: postgres_container
     ports:
       - '5432:5432' # Standard Postgres port
-    environment:
-      POSTGRES_HOST: 'postgres'
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'docker'
-      POSTGRES_DBNAME: 'postgres'
+    env_file:
+      - .env
+     
